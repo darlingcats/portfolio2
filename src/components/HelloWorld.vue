@@ -30,29 +30,18 @@
       </div>
       <div class="img">
         <ul>
-          <li>
-            <a href=""><img src="../assets/20191029chipsaw.jpg"/></a>
-          </li>
-          <li>
-            <a href=""><img src="../assets/20200708sale.jpg"/></a>
-          </li>
-          <li>
-            <a href=""><img src="../assets/20210315sale.jpg"/></a>
-          </li>
-          <li>
-            <a href=""><img src="../assets/20210318sale.jpg"/></a>
-          </li>
-          <li>
-            <a href=""><img src="../assets/20210426sale.jpg"/></a>
-          </li>
-          <li>
-            <a href=""><img src="../assets/0001_page-0001.jpg"/></a>
+          <li
+            @click="showModal(imgurl)"
+            v-for="imgurl in imgurls"
+            :key="imgurl"
+          >
+            <img :src="imgurl" />
           </li>
         </ul>
       </div>
-      <div class="modal">
-        <div class="bigimg"><img src="" alt="" /></div>
-        <p class="close-btn"><a href="">✖</a></p>
+      <div class="modal" v-show="modalvisible">
+        <div class="bigimg"><img :src="currentimgurl" alt="" /></div>
+        <p class="close-btn"><a @click.prevent="hidemodal" href="#">✖</a></p>
       </div>
     </main>
   </section>
@@ -62,6 +51,17 @@
 export default {
   name: 'HelloWorld',
   props: {
+    imgurls: {
+      type: Array,
+      default: [
+        '/src/assets/20191029chipsaw.jpg',
+        '/src/assets/20200708sale.jpg',
+        '/src/assets/20210315sale.jpg',
+        '/src/assets/20210318sale.jpg',
+        '/src/assets/20210426sale.jpg',
+        '/src/assets/0001_page-0001.jpg'
+      ]
+    },
     msg: {
       type: String,
       required: true
@@ -69,7 +69,18 @@ export default {
   },
   data () {
     return {
-      counter: 0
+      currentimgurl: '/src/assets/20191029chipsaw.jpg',
+      counter: 0,
+      modalvisible: false
+    }
+  },
+  methods: {
+    showModal (imgurl) {
+      this.currentimgurl = imgurl
+      this.modalvisible = true
+    },
+    hidemodal () {
+      this.modalvisible = false
     }
   }
 }
@@ -200,7 +211,7 @@ ul li a img {
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
-  display: none;
+  /*display: none;*/
 }
 .bigimg {
   position: absolute;
@@ -260,7 +271,6 @@ ul li a img {
     width: 150px;
   }
   ul {
-    display: flex;
     margin-bottom: 20px;
   }
   ul li a:hover {
@@ -273,7 +283,7 @@ ul li a img {
   ul li:nth-last-child(1) {
     margin-right: 0;
   }
-  ul li a img {
+  ul li img {
     width: 300px;
   }
   .modal {
@@ -283,7 +293,7 @@ ul li a img {
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
-    display: none;
+    /*display: none;*/
   }
   .bigimg {
     text-align: center;
