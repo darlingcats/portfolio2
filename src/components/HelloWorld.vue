@@ -23,12 +23,15 @@
         </div>
         <div class="name">
           <p>
-            平林　彰史
+            <TypeWriterText :text="'平林　彰史'" :textTimeout="3200" />
           </p>
-          <vue-typer text="Hello World! I was registered locally!"></vue-typer>
           <p>
-            1983年6月24日、東京都の小平市に生まれる。<br />
-            趣味はお菓子作り、ゲーム
+            <TypeWriterText
+              :text="
+                '1983年6月24日、東京都の小平市に生まれる。趣味はお菓子作り、ゲーム'
+              "
+              :textTimeout="5000"
+            />
           </p>
         </div>
       </div>
@@ -50,8 +53,12 @@
 </template>
 
 <script lang="ts">
+import TypeWriterText from './TypeWriterText.vue'
 export default {
   name: 'HelloWorld',
+  components: {
+    TypeWriterText
+  },
   props: {
     imgurls: {
       type: Array,
