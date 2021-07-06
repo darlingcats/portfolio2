@@ -1,7 +1,7 @@
 <template>
   <div class="shutter">
     <div class="startword">
-      portfolio start
+      <p>PオTFOLIO STアT</p>
     </div>
   </div>
   <section class="container">
@@ -9,9 +9,6 @@
       <header>
         <h1>portfolio</h1>
       </header>
-      <!--<a href="http://www.tam-tam.co.jp/tipsnote/">
-            <button>TipsNote に戻る</button>
-        </a>-->
       <button @click="counter++" id="counter">Counter: {{ counter }}</button>
       <div class="prof">
         <div class="face">
@@ -30,7 +27,7 @@
               :text="
                 '1983年6月24日、東京都の小平市に生まれる。趣味はお菓子作り、ゲーム'
               "
-              :textTimeout="5000"
+              :textTimeout="6400"
             />
           </p>
         </div>
@@ -104,6 +101,11 @@ body {
   color: $font_color;
   text-align: center;
 }
+main {
+  display: block;
+  background: #1e1e1e;
+  height: 100vh;
+}
 
 .shutter {
   position: fixed;
@@ -174,11 +176,21 @@ body {
 }
 
 .startword {
+  width: 200px;
+  height: 50px;
   position: absolute;
   top: 50%;
   left: 50%;
-  background: #000;
+  background: #1e1e1e;
   border: 1px solid #fff;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+.startword p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 header {
   position: sticky;
@@ -276,43 +288,88 @@ ul li a img {
     margin: 0 auto;
   }
   .prof {
+    position: absolute;
     display: flex;
     flex-direction: row;
     margin-bottom: 50px;
-    width: 80vw;
+    width: 53vw;
     margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 3px solid #808080;
+    box-shadow: 3px 3px 0 0 rgb(255 255 255 / 75%);
   }
   .face {
     margin-right: 20px;
     margin-left: 0px;
-    width: 50%;
-    text-align: right;
   }
   .face img {
     width: 150px;
   }
   .name {
-    width: 50%;
     text-align: left;
   }
-  ul {
-    margin-bottom: 20px;
-    position: absolute;
-    left: 0px;
+  .img ul {
+    position: relative;
+    transform-style: preserve-3d;
+    animation: anime1 20s linear infinite;
+    transform: rotateY(0deg);
+    height: 140px;
+    width: 500px;
+    margin: auto;
+  }
+  .img ul:hover {
+    animation-play-state: paused;
   }
   ul li a:hover {
     opacity: 0.8;
   }
   ul li {
-    list-style: none;
-    margin-right: 20px;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    backface-visibility: hidden;
+    height: 140px;
+    width: 250px;
   }
-  ul li:nth-last-child(1) {
-    margin-right: 0;
+  @keyframes anime1 {
+    0% {
+      transform: rotateY(0);
+    }
+    100% {
+      transform: rotateY(-360deg);
+    }
+  }
+  ul li:nth-child(1) {
+    transform: translate3d(-25%, 0, 108.25px) rotateY(-60deg);
+  }
+  ul li:nth-child(2) {
+    transform: translate3d(50%, 0, 216.5px);
+  }
+  ul li:nth-child(3) {
+    transform: translate3d(125%, 0, 108.25px) rotateY(60deg);
+  }
+  ul li:nth-child(4) {
+    transform: translate3d(125%, 0, -108.25px) rotateY(-240deg);
+  }
+  ul li:nth-child(5) {
+    transform: translate3d(50%, 0, -216.5px) rotateY(180deg);
+  }
+  ul li:nth-child(6) {
+    transform: translate3d(-25%, 0, -108.25px) rotateY(240deg);
   }
   ul li img {
-    width: 300px;
-    cursor: pointer;
+    display: block;
+    font: 60px / 1 'arial';
+    padding: 20px 0 0 20px;
+    text-align: left;
+    width: 250px;
   }
   .modal {
     position: fixed;

@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper">
-    <p class="current">{{ currentText }}<span class="prompt">|</span></p>
+    <p class="current">
+      {{ currentText }}<span v-if="showPrompt" class="prompt">|</span>
+    </p>
   </div>
 </template>
 
@@ -35,21 +37,39 @@ export default {
   },
   data () {
     return {
-      currentText: ''
+      currentText: '',
+      showPrompt: false
     }
   },
   async mounted () {
     await sleep(this.textTimeout)
+    this.showPrompt = true
+    await sleep(1500)
     for (var idx = 0; idx < this.text.length; idx++) {
       this.currentText += this.text[idx]
-      await sleep(randn_bm() * 500)
+      await sleep(randn_bm() * 300)
     }
+    this.showPrompt = false
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .wrapper {
+  font-size: 22px;
   display: flex;
+  font-family: 'DotGothic16', sans-serif;
+}
+@keyframes prompt {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+.prompt {
+  position: absolute;
+  animation: prompt 1s ease infinite;
 }
 </style>
