@@ -1,6 +1,6 @@
 <template>
   <div class="shutter">
-    <div>
+    <div class="startword">
       portfolio start
     </div>
   </div>
@@ -25,24 +25,26 @@
           <p>
             平林　彰史
           </p>
-          <p>1983年6月24日、東京都の小平市に生まれる。<br /></p>
+          <vue-typer text="Hello World! I was registered locally!"></vue-typer>
+          <p>
+            1983年6月24日、東京都の小平市に生まれる。<br />
+            趣味はお菓子作り、ゲーム
+          </p>
         </div>
       </div>
       <div class="img">
         <ul>
-          <li
-            @click="showModal(imgurl)"
-            v-for="imgurl in imgurls"
-            :key="imgurl"
-          >
-            <img :src="imgurl" />
+          <li v-for="imgurl in imgurls" :key="imgurl">
+            <img @click="showModal(imgurl)" :src="imgurl" />
           </li>
         </ul>
       </div>
-      <div class="modal" v-show="modalvisible">
-        <div class="bigimg"><img :src="currentimgurl" alt="" /></div>
-        <p class="close-btn"><a @click.prevent="hidemodal" href="#">✖</a></p>
-      </div>
+      <transition name="fadeHoge">
+        <div class="modal" v-if="modalvisible" @click.prevent="hidemodal">
+          <div class="bigimg"><img :src="currentimgurl" alt="" /></div>
+          <p class="close-btn"><a href="#">✖</a></p>
+        </div>
+      </transition>
     </main>
   </section>
 </template>
@@ -75,7 +77,7 @@ export default {
     }
   },
   methods: {
-    showModal (imgurl) {
+    showModal (imgurl: string) {
       this.currentimgurl = imgurl
       this.modalvisible = true
     },
@@ -163,6 +165,14 @@ body {
     transform: perspective(800px) scale(1) rotateX(0);
   }
 }
+
+.startword {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #000;
+  border: 1px solid #fff;
+}
 header {
   position: sticky;
   top: 0;
@@ -211,7 +221,6 @@ ul li a img {
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
-  /*display: none;*/
 }
 .bigimg {
   position: absolute;
@@ -257,21 +266,32 @@ ul li a img {
     font-weight: bold;
     border: none;
     text-align: left;
+    margin: 0 auto;
   }
   .prof {
     display: flex;
     flex-direction: row;
     margin-bottom: 50px;
+    width: 80vw;
+    margin: 0 auto;
   }
   .face {
     margin-right: 20px;
     margin-left: 0px;
+    width: 50%;
+    text-align: right;
   }
   .face img {
     width: 150px;
   }
+  .name {
+    width: 50%;
+    text-align: left;
+  }
   ul {
     margin-bottom: 20px;
+    position: absolute;
+    left: 0px;
   }
   ul li a:hover {
     opacity: 0.8;
@@ -285,6 +305,7 @@ ul li a img {
   }
   ul li img {
     width: 300px;
+    cursor: pointer;
   }
   .modal {
     position: fixed;
@@ -293,7 +314,6 @@ ul li a img {
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
-    /*display: none;*/
   }
   .bigimg {
     text-align: center;
@@ -305,6 +325,8 @@ ul li a img {
     left: 0;
     right: 0;
     margin: 0 auto;
+    transition: 1s ease;
+    transform: rotate(360deg);
   }
   .modal .bigimg img {
     height: 85vh;
@@ -325,6 +347,26 @@ ul li a img {
   .close-btn a:hover {
     color: #fff;
     text-decoration: none;
+  }
+  .fadeHoge-enter-active,
+  .fadeHoge-leave-active {
+    transition: opacity 1s ease;
+  }
+
+  .fadeHoge-enter-from,
+  .fadeHoge-leave-to {
+    opacity: 0;
+  }
+  .fadeHoge-enter-active img,
+  .fadeHoge-leave-active img {
+    transition: 1s ease;
+    transform: rotate(0deg);
+  }
+
+  .fadeHoge-enter-from img,
+  .fadeHoge-leave-to img {
+    opacity: 0;
+    transform: rotate(360deg);
   }
 }
 </style>
