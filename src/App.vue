@@ -1,7 +1,7 @@
 <template>
   <!--<img alt="Vue logo" src="./assets/logo.png" />-->
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
-  <div class="app">
+  <!--<div class="app">
     <Carousel @next="next" @prev="prev">
       <CarouselSlide
         v-for="(slide, index) in slides"
@@ -13,6 +13,7 @@
       </CarouselSlide>
     </Carousel>
   </div>
+  -->
 </template>
 
 <script lang="ts">
