@@ -33,11 +33,17 @@
         </div>
       </div>
       <div class="img">
-        <ul>
+        <div @click="carouselIdx = ++carouselIdx % 6" style="color: #fff">
+          ＜
+        </div>
+        <ul class="carousel" :class="'carouselprev' + carouselIdx">
           <li v-for="imgurl in imgurls" :key="imgurl">
             <img @click="showModal(imgurl)" :src="imgurl" />
           </li>
         </ul>
+        <div @click="carouselIdx = --carouselIdx % 6" style="color: #fff">
+          ＞
+        </div>
       </div>
       <transition name="fadeHoge">
         <div class="modal" v-if="modalvisible" @click.prevent="hidemodal">
@@ -77,7 +83,9 @@ export default {
     return {
       currentimgurl: '/src/assets/20191029chipsaw.jpg',
       counter: 0,
-      modalvisible: false
+      modalvisible: false,
+      isPrev: 360 / this.imgurls.length,
+      carouselIdx: 0
     }
   },
   methods: {
@@ -87,7 +95,8 @@ export default {
     },
     hidemodal () {
       this.modalvisible = false
-    }
+    },
+    prev () {}
   }
 }
 </script>
@@ -313,16 +322,53 @@ ul li a img {
   .name {
     text-align: left;
   }
-  .img ul {
+  .img {
+    display: flex;
+  }
+  .carousel {
     position: relative;
     transform-style: preserve-3d;
     animation: anime1 20s linear infinite;
-    transform: rotateY(0deg);
     height: 140px;
     width: 500px;
     margin: auto;
+    transition: 0.5s ease;
+
+    &.carouselprev0 {
+      transform: rotateY(0deg);
+    }
+    &.carouselprev1 {
+      transform: rotateY(60deg);
+    }
+    &.carouselprev2 {
+      transform: rotateY(120deg);
+    }
+    &.carouselprev3 {
+      transform: rotateY(180deg);
+    }
+    &.carouselprev4 {
+      transform: rotateY(240deg);
+    }
+    &.carouselprev5 {
+      transform: rotateY(300deg);
+    }
+    &.carouselprev-1 {
+      transform: rotateY(-60deg);
+    }
+    &.carouselprev-2 {
+      transform: rotateY(-120deg);
+    }
+    &.carouselprev-3 {
+      transform: rotateY(-180deg);
+    }
+    &.carouselprev-4 {
+      transform: rotateY(-240deg);
+    }
+    &.carouselprev-5 {
+      transform: rotateY(-300deg);
+    }
   }
-  .img ul:hover {
+  .carousel:hover {
     animation-play-state: paused;
   }
   ul li a:hover {
@@ -338,14 +384,14 @@ ul li a img {
     height: 140px;
     width: 250px;
   }
-  @keyframes anime1 {
+  /*@keyframes anime1 {
     0% {
       transform: rotateY(0);
     }
     100% {
       transform: rotateY(-360deg);
     }
-  }
+  }*/
   ul li:nth-child(1) {
     transform: translate3d(-25%, 0, 108.25px) rotateY(-60deg);
   }

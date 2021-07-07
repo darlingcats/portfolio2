@@ -1,8 +1,8 @@
 <template>
   <div class="carousel">
     <slot></slot>
-    <button @click="next" class="carousel__next">次へ</button>
-    <button @click="prev" class="carousel__prev">前へ</button>
+    <button @click="prev" class="carousel__prev">＜</button>
+    <button @click="next" class="carousel__next">＞</button>
   </div>
 </template>
 
