@@ -113,7 +113,7 @@ export default {
 
 <style lang="scss" scoped>
 $n: 11; // Number of images
-$item-width: 100px; // Width of an image. In the Js version this value can be a percentage
+$item-width: 200px; // Width of an image. In the Js version this value can be a percentage
 $item-separation: 10px; // The space between the images. This will decrease the effective item width
 $viewer-distance: 800px;
 // Derived variables
@@ -203,8 +203,8 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
 .bigimg {
   text-align: center;
   position: absolute;
-  /*width: 80%;*/
-  height: 80vh;
+  width: 90vw;
+  /*height: 80vh;*/
   max-width: 800px;
   top: 80px;
   left: 0;
