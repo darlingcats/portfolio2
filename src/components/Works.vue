@@ -1,7 +1,5 @@
 <template>
-  <!--<transition name="works">-->
   <div class="carouselImg">
-    <!--<ul class="carousel" :class="'carouselprev' + carouselIdx">-->
     <figure>
       <img
         v-for="imgurl in imgurls"
@@ -10,7 +8,6 @@
         :src="imgurl"
       />
     </figure>
-    <!--</ul>-->
     <nav>
       <button class="nav prev">
         ＜
@@ -20,7 +17,9 @@
       </button>
     </nav>
   </div>
-  <!--</transition>-->
+  <div class="worksText">
+    <TypeWriterText :text="'作品を選択してください'" :textTimeout="20000" />
+  </div>
   <transition name="fadeHoge">
     <div class="modal" v-if="modalvisible" @click.prevent="hidemodal">
       <div class="bigimg"><img :src="currentimgurl" alt="" /></div>
@@ -30,8 +29,13 @@
 </template>
 
 <script lang="ts">
+import TypeWriterText from './TypeWriterText.vue'
+
 export default {
   name: 'Works',
+  components: {
+    TypeWriterText
+  },
   props: {
     imgurls: {
       type: Array,
@@ -142,7 +146,6 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
       box-sizing: border-box;
       padding: 0 $item-separation;
       &:not(:first-of-type) {
-        /*display: none; /* Just for now */
         position: absolute;
         left: 0;
         top: 0;
@@ -167,6 +170,7 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
       cursor: pointer;
 
       color: #333;
+      font-weight: bold;
       background: none;
       border: 1px solid;
       letter-spacing: 1px;
@@ -174,7 +178,17 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
     }
   }
 }
-
+.worksText {
+  width: 22vw;
+  height: 52px;
+  margin: 15px auto;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #333;
+  border-radius: 10px;
+}
 .arrows {
   color: #fff;
   cursor: pointer;

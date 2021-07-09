@@ -6,14 +6,11 @@
   </div>
   <section class="container">
     <main>
-      <!--<header>
-        <h1>portfolio</h1>
-      </header>-->
       <div class="bgStack">
         <div class="bgStack1"></div>
         <div class="bgStack2"></div>
       </div>
-      <button @click="counter++" id="counter">Counter: {{ counter }}</button>
+      <!--<button @click="counter++" id="counter">Counter: {{ counter }}</button>-->
       <div class="prof delayUp">
         <div class="face">
           <img :src="imgProf" alt="顔写真" width="150px" />
@@ -40,16 +37,6 @@
                 '高校卒業後、ファッションデザイナーを目指すが挫折。しかしグラフィックの面白さに目覚め現在に至る。'
               "
               :textTimeout="10400"
-            />
-          </p>
-        </div>
-      </div>
-      <div class="underWindow">
-        <div class="name">
-          <p>
-            <TypeWriterText
-              :text="'作品を選択してください。'"
-              :textTimeout="20000"
             />
           </p>
         </div>
@@ -96,7 +83,7 @@ export default {
     },
     imgProf: {
       type: String,
-      default: './assets/P_B2C1_0316_182849.jpg'
+      default: './assets/face.png.jpg'
     },
     msg: {
       type: String,
@@ -139,7 +126,7 @@ $font_color: #333;
 
 main {
   display: block;
-  background: #000;
+  background: orange;
   height: 100vh;
 }
 .bgStack {
@@ -150,22 +137,49 @@ main {
   opacity: 0.3;
   width: 100vw;
   height: 100vh;
-  transform: rotate(-3deg);
+  transform: rotate(0deg);
   transition: 0.3s ease;
   position: absolute;
   top: 0;
   left: 0;
+  animation-name: anime4;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
 }
+@keyframes anime4 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-4deg);
+  }
+}
+
 .bgStack2 {
   background: #fff;
   opacity: 0.3;
   width: 100vw;
   height: 100vh;
-  transform: rotate(-6deg);
+  transform: rotate(0deg);
   transition: 0.3s ease;
   position: absolute;
   top: 0;
   left: 0;
+  animation-name: anime5;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-delay: 4s;
+  animation-fill-mode: forwards;
+}
+@keyframes anime5 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-8deg);
+  }
 }
 .shutter {
   position: fixed;
@@ -242,7 +256,7 @@ main {
 }
 
 .startword {
-  width: 200px;
+  width: 350px;
   height: 50px;
   position: absolute;
   top: 50%;
@@ -251,13 +265,14 @@ main {
   border: 1px solid #fff;
   text-align: center;
   transform: translate(-50%, -50%);
+  font-size: 36px;
 }
-.startword p {
+/*.startword p {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
+}*/
 header {
   position: sticky;
   top: 0;
@@ -345,14 +360,6 @@ ul li {
   height: 140px;
   width: 30vw;
 }
-/*@keyframes anime1 {
-    0% {
-      transform: rotateY(0);
-    }
-    100% {
-      transform: rotateY(-360deg);
-    }
-  }*/
 ul li:nth-child(1) {
   transform: translate3d(-25%, 0, 108.25px) rotateY(-60deg);
 }
@@ -388,7 +395,6 @@ ul li img {
 }
 .bigimg {
   position: absolute;
-  /*width: 80%;*/
   height: 80vh;
   max-width: 800px;
   top: 80px;
@@ -436,8 +442,7 @@ ul li img {
     animation-name: anime2;
     animation-duration: 3s;
     animation-timing-function: ease;
-    /*animation-iteration-count: 1;*/
-    animation-delay: 10s;
+    animation-delay: 15s;
     animation-fill-mode: forwards;
   }
   @keyframes anime2 {
@@ -480,7 +485,7 @@ ul li img {
     animation-duration: 3s;
     animation-timing-function: ease;
     /*animation-iteration-count: 1;*/
-    animation-delay: 12s;
+    animation-delay: 18s;
     animation-fill-mode: forwards;
     opacity: 0;
   }
@@ -491,23 +496,6 @@ ul li img {
     100% {
       opacity: 1;
     }
-  }
-  .underWindow {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 50px;
-    max-width: 700px;
-    width: 53vw;
-    margin: 0 auto;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    border: 3px solid #808080;
-    box-shadow: 3px 3px 0 0 rgb(255 255 255 / 75%);
   }
 }
 </style>

@@ -57,7 +57,7 @@ export default {
 <style lang="scss" scoped>
 .wrapper {
   font-size: 20px;
-  display: flex;
+  /*display: flex;*/
   font-family: 'DotGothic16', sans-serif;
 }
 @keyframes prompt {
