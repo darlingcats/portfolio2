@@ -27,12 +27,6 @@
       <p class="close-btn"><a href="#">✖</a></p>
     </div>
   </transition>
-  <div class="arrows" @click="carouselIdx = ++carouselIdx % 6">
-    ＜
-  </div>
-  <div class="arrows" @click="carouselIdx = --carouselIdx % 6">
-    ＞
-  </div>
 </template>
 
 <script lang="ts">
@@ -42,12 +36,22 @@ export default {
     imgurls: {
       type: Array,
       default: [
-        '/src/assets/20191029chipsaw.jpg',
-        '/src/assets/20200708sale.jpg',
-        '/src/assets/20210315sale.jpg',
-        '/src/assets/20210318sale.jpg',
-        '/src/assets/20210426sale.jpg',
-        '/src/assets/0001_page-0001.jpg'
+        '/src/assets/hirabayashi_works_page-0006.jpg',
+        '/src/assets/hirabayashi_works_page-0007.jpg',
+        '/src/assets/hirabayashi_works_page-0008.jpg',
+        '/src/assets/hirabayashi_works_page-0009.jpg',
+        '/src/assets/hirabayashi_works_page-0010.jpg',
+        '/src/assets/hirabayashi_works_page-0011.jpg',
+        '/src/assets/hirabayashi_works_page-0012.jpg',
+        '/src/assets/hirabayashi_works_page-0013.jpg',
+        '/src/assets/hirabayashi_works_page-0014.jpg',
+        '/src/assets/hirabayashi_works_page-0015.jpg',
+        '/src/assets/hirabayashi_works_page-0016.jpg',
+        '/src/assets/hirabayashi_works_page-0001.jpg',
+        '/src/assets/hirabayashi_works_page-0002.jpg',
+        '/src/assets/hirabayashi_works_page-0003.jpg',
+        '/src/assets/hirabayashi_works_page-0004.jpg',
+        '/src/assets/hirabayashi_works_page-0005.jpg'
       ]
     },
     msg: {
@@ -109,7 +113,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$n: 6; // Number of images
+$n: 16; // Number of images
 $item-width: 200px; // Width of an image. In the Js version this value can be a percentage
 $item-separation: 10px; // The space between the images. This will decrease the effective item width
 $viewer-distance: 800px;
@@ -120,7 +124,7 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 30vh;
+  padding-top: 35vh;
   perspective: $viewer-distance;
   overflow: hidden;
   > * {
@@ -131,6 +135,7 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
     width: $item-width;
     transform-style: preserve-3d;
     transform-origin: 50% 50% (-$apothem);
+    transition: transform 0.5s;
     transform: rotateY(/* some amount here */ rad);
     img {
       width: 100%;
@@ -260,6 +265,68 @@ ul li img {
   padding: 20px 0 0 20px;
   text-align: left;
   width: 250px;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+}
+.bigimg {
+  text-align: center;
+  position: absolute;
+  /*width: 80%;*/
+  height: 80vh;
+  max-width: 800px;
+  top: 80px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transition: 1s ease;
+  transform: rotate(360deg);
+}
+.modal .bigimg img {
+  height: 85vh;
+  max-width: 100%;
+  vertical-align: baseline;
+}
+.close-btn {
+  color: #fff;
+  font-size: 40px;
+  position: absolute;
+  right: 20px;
+  top: 0;
+}
+.close-btn a {
+  color: #fff;
+  text-decoration: none;
+}
+.close-btn a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.fadeHoge-enter-active,
+.fadeHoge-leave-active {
+  transition: opacity 1s ease;
+}
+
+.fadeHoge-enter-from,
+.fadeHoge-leave-to {
+  opacity: 0;
+}
+.fadeHoge-enter-active img,
+.fadeHoge-leave-active img {
+  transition: 1s ease;
+  transform: rotate(0deg);
+}
+
+.fadeHoge-enter-from img,
+.fadeHoge-leave-to img {
+  opacity: 0;
+  transform: rotate(360deg) scale(30%);
 }
 .works-enter-active,
 .works-leave-active {

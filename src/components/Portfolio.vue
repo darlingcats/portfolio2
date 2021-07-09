@@ -13,7 +13,6 @@
         <div class="bgStack1"></div>
         <div class="bgStack2"></div>
       </div>
-      <Works />
       <button @click="counter++" id="counter">Counter: {{ counter }}</button>
       <div class="prof delayUp">
         <div class="face">
@@ -49,19 +48,6 @@
           </p>
         </div>
       </div>
-      <div class="img delayAppear">
-        <div class="arrows" @click="carouselIdx = ++carouselIdx % 6">
-          ＜
-        </div>
-        <ul class="carousel" :class="'carouselprev' + carouselIdx">
-          <li v-for="imgurl in imgurls" :key="imgurl">
-            <img @click="showModal(imgurl)" :src="imgurl" />
-          </li>
-        </ul>
-        <div class="arrows" @click="carouselIdx = --carouselIdx % 6">
-          ＞
-        </div>
-      </div>
       <div class="underWindow">
         <div class="name">
           <p>
@@ -72,13 +58,13 @@
           </p>
         </div>
       </div>
+      <div class="approved">
+        ※掲載許諾済
+      </div>
 
-      <transition name="fadeHoge">
-        <div class="modal" v-if="modalvisible" @click.prevent="hidemodal">
-          <div class="bigimg"><img :src="currentimgurl" alt="" /></div>
-          <p class="close-btn"><a href="#">✖</a></p>
-        </div>
-      </transition>
+      <div class="img delayAppear">
+        <Works />
+      </div>
     </main>
   </section>
 </template>
@@ -151,11 +137,6 @@ export default {
 $bg_color: #fafafa;
 $font_color: #333;
 
-body {
-  background-color: $bg_color;
-  color: $font_color;
-  text-align: center;
-}
 main {
   display: block;
   background: #000;
@@ -170,6 +151,7 @@ main {
   width: 100vw;
   height: 100vh;
   transform: rotate(-3deg);
+  transition: 0.3s ease;
   position: absolute;
   top: 0;
   left: 0;
@@ -180,6 +162,7 @@ main {
   width: 100vw;
   height: 100vh;
   transform: rotate(-6deg);
+  transition: 0.3s ease;
   position: absolute;
   top: 0;
   left: 0;
@@ -212,7 +195,13 @@ main {
 .content {
   animation: contentScale 2.6s forwards;
 }
-
+.approved {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #aaa;
+  text-align: right;
+}
 @keyframes byeShutter {
   70% {
     opacity: 1;
@@ -493,6 +482,7 @@ ul li img {
     /*animation-iteration-count: 1;*/
     animation-delay: 12s;
     animation-fill-mode: forwards;
+    opacity: 0;
   }
   @keyframes anime3 {
     0% {
@@ -502,7 +492,6 @@ ul li img {
       opacity: 1;
     }
   }
-
   .underWindow {
     position: absolute;
     display: flex;
@@ -519,67 +508,6 @@ ul li img {
     border-radius: 10px;
     border: 3px solid #808080;
     box-shadow: 3px 3px 0 0 rgb(255 255 255 / 75%);
-  }
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  .bigimg {
-    text-align: center;
-    position: absolute;
-    /*width: 80%;*/
-    height: 80vh;
-    max-width: 800px;
-    top: 80px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    transition: 1s ease;
-    transform: rotate(360deg);
-  }
-  .modal .bigimg img {
-    height: 85vh;
-    max-width: 100%;
-    vertical-align: baseline;
-  }
-  .close-btn {
-    color: #fff;
-    font-size: 40px;
-    position: absolute;
-    right: 20px;
-    top: 0;
-  }
-  .close-btn a {
-    color: #fff;
-    text-decoration: none;
-  }
-  .close-btn a:hover {
-    color: #fff;
-    text-decoration: none;
-  }
-  .fadeHoge-enter-active,
-  .fadeHoge-leave-active {
-    transition: opacity 1s ease;
-  }
-
-  .fadeHoge-enter-from,
-  .fadeHoge-leave-to {
-    opacity: 0;
-  }
-  .fadeHoge-enter-active img,
-  .fadeHoge-leave-active img {
-    transition: 1s ease;
-    transform: rotate(0deg);
-  }
-
-  .fadeHoge-enter-from img,
-  .fadeHoge-leave-to img {
-    opacity: 0;
-    transform: rotate(360deg) scale(30%);
   }
 }
 </style>
