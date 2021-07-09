@@ -26,6 +26,10 @@
         :textTimeout="10400"
       />
     </p>
+    <div class="resume">
+      <button><a :href="rsmurls" target="”_blank”">履歴書</a></button>
+      <button><a :href="careerurls" target="”_blank”">職務経歴書</a></button>
+    </div>
   </div>
 </template>
 
@@ -39,6 +43,15 @@ export default {
     Works
   },
   props: {
+    rsmurls: {
+      type: Array,
+      default: ['./assets/rirekisho2021.pdf']
+    },
+    careerurls: {
+      type: Array,
+      default: ['./assets/shokumukeirekisho2021.pdf']
+    },
+
     text: {
       type: String,
       default: '平林　彰史'
@@ -67,6 +80,39 @@ export default {
 .profText {
   text-align: left;
 }
+.resume {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  margin-top: 20px;
+  animation-name: resumeAnime;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-delay: 15s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  button {
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 5px 10px;
+    &:hover {
+      color: #fff;
+      background: #000;
+    }
+    a {
+      position: relative;
+    }
+  }
+}
+@keyframes resumeAnime {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @media screen and (min-width: 481px) {
   .face {
     margin-right: 20px;

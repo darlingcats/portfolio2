@@ -20,10 +20,6 @@
   <div class="worksText">
     <TypeWriterText :text="'作品を選択してください'" :textTimeout="20000" />
   </div>
-  <div class="resume">
-    <button><a :href="rsmurls" target="”_blank”">履歴書</a></button>
-    <p><a :href="careerurls" target="”_blank”">職務経歴書</a></p>
-  </div>
   <transition name="fadeHoge">
     <div class="modal" v-if="modalvisible" @click.prevent="hidemodal">
       <div class="bigimg"><img :src="currentimgurl" alt="" /></div>
@@ -56,14 +52,6 @@ export default {
         './assets/hirabayashi_works_page-0004.jpg',
         './assets/hirabayashi_works_page-0005.jpg'
       ]
-    },
-    rsmurls: {
-      type: Array,
-      default: ['./assets/rirekisho2021.pdf']
-    },
-    careerurls: {
-      type: Array,
-      default: ['./assets/shokumukeirekisho2021.pdf']
     },
     msg: {
       type: String,
@@ -200,9 +188,6 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
   justify-content: center;
   border: 1px solid #333;
   border-radius: 6px;
-}
-.resume a {
-  position: relative;
 }
 .arrows {
   color: #fff;
