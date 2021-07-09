@@ -44,10 +44,10 @@ export default {
   async mounted () {
     await sleep(this.textTimeout)
     this.showPrompt = true
-    await sleep(1500)
+    await sleep(600)
     for (var idx = 0; idx < this.text.length; idx++) {
       this.currentText += this.text[idx]
-      await sleep(randn_bm() * 300)
+      await sleep(randn_bm() * 100)
     }
     this.showPrompt = false
   }
@@ -56,7 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-  font-size: 22px;
+  font-size: 20px;
   display: flex;
   font-family: 'DotGothic16', sans-serif;
 }

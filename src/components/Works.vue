@@ -1,25 +1,38 @@
 <template>
-  <transition name="works">
-    <div class="img">
-      <div class="arrows" @click="carouselIdx = ++carouselIdx % 6">
+  <!--<transition name="works">-->
+  <div class="carouselImg">
+    <!--<ul class="carousel" :class="'carouselprev' + carouselIdx">-->
+    <figure>
+      <img
+        v-for="imgurl in imgurls"
+        :key="imgurl"
+        @click="showModal(imgurl)"
+        :src="imgurl"
+      />
+    </figure>
+    <!--</ul>-->
+    <nav>
+      <button class="nav prev">
         ＜
-      </div>
-      <ul class="carousel" :class="'carouselprev' + carouselIdx">
-        <li v-for="imgurl in imgurls" :key="imgurl">
-          <img @click="showModal(imgurl)" :src="imgurl" />
-        </li>
-      </ul>
-      <div class="arrows" @click="carouselIdx = --carouselIdx % 6">
+      </button>
+      <button class="nav next">
         ＞
-      </div>
-    </div>
-  </transition>
+      </button>
+    </nav>
+  </div>
+  <!--</transition>-->
   <transition name="fadeHoge">
     <div class="modal" v-if="modalvisible" @click.prevent="hidemodal">
       <div class="bigimg"><img :src="currentimgurl" alt="" /></div>
       <p class="close-btn"><a href="#">✖</a></p>
     </div>
   </transition>
+  <div class="arrows" @click="carouselIdx = ++carouselIdx % 6">
+    ＜
+  </div>
+  <div class="arrows" @click="carouselIdx = --carouselIdx % 6">
+    ＞
+  </div>
 </template>
 
 <script lang="ts">
@@ -66,18 +79,97 @@ export default {
     hidemodal () {
       this.modalvisible = false
     }
+  },
+  mounted () {
+    var carousel = document.querySelector('.carouselImg')
+    var figure = carousel.querySelector('figure')
+    var nav = carousel.querySelector('nav')
+    var numImages = figure.childElementCount
+    var theta = (2 * Math.PI) / numImages
+    var currImage = 0
+
+    nav.addEventListener('click', onClick, true)
+
+    function onClick (e) {
+      e.stopPropagation()
+
+      var t = e.target
+      if (t.tagName.toUpperCase() != 'BUTTON') return
+
+      if (t.classList.contains('next')) {
+        currImage++
+      } else {
+        currImage--
+      }
+
+      figure.style.transform = `rotateY(${currImage * -theta}rad)`
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.img {
+$n: 6; // Number of images
+$item-width: 200px; // Width of an image. In the Js version this value can be a percentage
+$item-separation: 10px; // The space between the images. This will decrease the effective item width
+$viewer-distance: 800px;
+// Derived variables
+$theta: 2 * 3.141592653589793 / $n;
+$apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
+.carouselImg {
   display: flex;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30vh;
+  perspective: $viewer-distance;
+  overflow: hidden;
+  > * {
+    flex: 0 0 auto;
+  }
+  figure {
+    margin: 0%;
+    width: $item-width;
+    transform-style: preserve-3d;
+    transform-origin: 50% 50% (-$apothem);
+    transform: rotateY(/* some amount here */ rad);
+    img {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0 $item-separation;
+      &:not(:first-of-type) {
+        /*display: none; /* Just for now */
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform-origin: 50% 50% (-$apothem);
+      }
+      @for $i from 2 through $n {
+        &:nth-child(#{$i}) {
+          transform: rotateY(#{($i - 1) * $theta}rad);
+        }
+      }
+    }
+  }
+  nav {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 0;
+
+    button {
+      flex: 0 0 auto;
+      margin: 0 5px;
+
+      cursor: pointer;
+
+      color: #333;
+      background: none;
+      border: 1px solid;
+      letter-spacing: 1px;
+      padding: 5px 10px;
+    }
+  }
 }
+
 .arrows {
   color: #fff;
   cursor: pointer;
