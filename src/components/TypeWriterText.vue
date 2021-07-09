@@ -56,7 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-  font-size: 20px;
+  font-size: 12px;
   /*display: flex;*/
   font-family: 'DotGothic16', sans-serif;
 }

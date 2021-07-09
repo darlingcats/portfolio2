@@ -113,7 +113,7 @@ export default {
 
 <style lang="scss" scoped>
 $n: 11; // Number of images
-$item-width: 200px; // Width of an image. In the Js version this value can be a percentage
+$item-width: 100px; // Width of an image. In the Js version this value can be a percentage
 $item-separation: 10px; // The space between the images. This will decrease the effective item width
 $viewer-distance: 800px;
 // Derived variables
@@ -174,15 +174,15 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
   }
 }
 .worksText {
-  width: 22vw;
-  height: 52px;
+  width: 45vw;
+  height: 35px;
   margin: 15px auto;
   color: #333;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid #333;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 .arrows {
   color: #fff;
@@ -190,90 +190,6 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
   font-size: 250%;
   font-weight: bold;
   margin: auto;
-}
-.carousel {
-  position: relative;
-  transform-style: preserve-3d;
-  animation: anime1 20s linear infinite;
-  height: 140px;
-  width: 500px;
-  margin: auto;
-  transition: 0.5s ease;
-
-  &.carouselprev0 {
-    transform: rotateY(0deg);
-  }
-  &.carouselprev1 {
-    transform: rotateY(60deg);
-  }
-  &.carouselprev2 {
-    transform: rotateY(120deg);
-  }
-  &.carouselprev3 {
-    transform: rotateY(180deg);
-  }
-  &.carouselprev4 {
-    transform: rotateY(240deg);
-  }
-  &.carouselprev5 {
-    transform: rotateY(300deg);
-  }
-  &.carouselprev-1 {
-    transform: rotateY(-60deg);
-  }
-  &.carouselprev-2 {
-    transform: rotateY(-120deg);
-  }
-  &.carouselprev-3 {
-    transform: rotateY(-180deg);
-  }
-  &.carouselprev-4 {
-    transform: rotateY(-240deg);
-  }
-  &.carouselprev-5 {
-    transform: rotateY(-300deg);
-  }
-}
-.carousel:hover {
-  animation-play-state: paused;
-}
-ul li a:hover {
-  opacity: 0.8;
-}
-ul li {
-  color: #fff;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  backface-visibility: hidden;
-  height: 140px;
-  width: 250px;
-}
-ul li:nth-child(1) {
-  transform: translate3d(-25%, 0, 108.25px) rotateY(-60deg);
-}
-ul li:nth-child(2) {
-  transform: translate3d(50%, 0, 216.5px);
-}
-ul li:nth-child(3) {
-  transform: translate3d(125%, 0, 108.25px) rotateY(60deg);
-}
-ul li:nth-child(4) {
-  transform: translate3d(125%, 0, -108.25px) rotateY(-240deg);
-}
-ul li:nth-child(5) {
-  transform: translate3d(50%, 0, -216.5px) rotateY(180deg);
-}
-ul li:nth-child(6) {
-  transform: translate3d(-25%, 0, -108.25px) rotateY(240deg);
-}
-ul li img {
-  display: block;
-  font: 60px / 1 'arial';
-  padding: 20px 0 0 20px;
-  text-align: left;
-  width: 250px;
 }
 .modal {
   position: fixed;
@@ -345,5 +261,128 @@ ul li img {
 .works-enter-from,
 .works-leave-to {
   opacity: 0;
+}
+@media screen and (min-width: 481px) {
+  $n: 11; // Number of images
+  $item-width: 200px; // Width of an image. In the Js version this value can be a percentage
+  $item-separation: 10px; // The space between the images. This will decrease the effective item width
+  $viewer-distance: 800px;
+  // Derived variables
+  $theta: 2 * 3.141592653589793 / $n;
+  $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
+  .carouselImg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 35vh;
+    perspective: $viewer-distance;
+    overflow: hidden;
+    > * {
+      flex: 0 0 auto;
+    }
+    figure {
+      margin: 0%;
+      width: $item-width;
+      transform-style: preserve-3d;
+      transform-origin: 50% 50% (-$apothem);
+      transition: transform 0.5s;
+      transform: rotateY(/* some amount here */ rad);
+      img {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 $item-separation;
+        &:not(:first-of-type) {
+          position: absolute;
+          left: 0;
+          top: 0;
+          transform-origin: 50% 50% (-$apothem);
+        }
+        @for $i from 2 through $n {
+          &:nth-child(#{$i}) {
+            transform: rotateY(#{($i - 1) * $theta}rad);
+          }
+        }
+      }
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0 0;
+
+      button {
+        flex: 0 0 auto;
+        margin: 0 5px;
+
+        cursor: pointer;
+
+        color: #333;
+        font-weight: bold;
+        background: none;
+        border: 1px solid;
+        letter-spacing: 1px;
+        padding: 5px 10px;
+      }
+    }
+  }
+  .worksText {
+    width: 22vw;
+    height: 52px;
+    margin: 15px auto;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #333;
+    border-radius: 10px;
+  }
+  .arrows {
+    color: #fff;
+    cursor: pointer;
+    font-size: 250%;
+    font-weight: bold;
+    margin: auto;
+  }
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+  }
+  .bigimg {
+    text-align: center;
+    position: absolute;
+    /*width: 80%;*/
+    height: 80vh;
+    max-width: 800px;
+    top: 80px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transition: 1s ease;
+    transform: rotate(360deg);
+  }
+  .modal .bigimg img {
+    height: 85vh;
+    max-width: 100%;
+    vertical-align: baseline;
+  }
+  .close-btn {
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    right: 20px;
+    top: 0;
+  }
+  .close-btn a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .close-btn a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
 }
 </style>

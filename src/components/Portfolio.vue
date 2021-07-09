@@ -271,163 +271,75 @@ main {
   align-items: center;
   justify-content: center;
 }
-header {
-  position: sticky;
-  top: 0;
-  background-color: #fff;
-  margin-bottom: 20px;
-}
 h1 {
   color: #000;
   font-size: 36px;
   font-weight: bold;
   border: none;
-  text-align: center;
+  text-align: left;
+  margin: 0 auto;
+}
+.delayUp {
+  animation-name: anime2;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-delay: 15s;
+  animation-fill-mode: forwards;
+}
+@keyframes anime2 {
+  0% {
+    top: 50%;
+  }
+  100% {
+    top: 18%;
+  }
 }
 .prof {
+  position: absolute;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: row;
   margin-bottom: 50px;
+  max-width: 300px;
+  width: 86vw;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -75%);
+  background: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  border: 3px solid #808080;
+  box-shadow: 3px 3px 0 0 rgb(255 255 255 / 75%);
 }
 .face {
-  text-align: center;
-  margin: 0 auto;
-  /*margin-right: 20px;*/
+  margin-right: 20px;
+  margin-left: 0px;
 }
-.arrows {
-  color: #fff;
-  cursor: pointer;
-  font-weight: bold;
+.face img {
+  width: 50px;
 }
-.carousel {
-  position: relative;
-  transform-style: preserve-3d;
-  animation: anime1 20s linear infinite;
-  height: 140px;
-  width: 70vw;
-  margin: auto;
-  transition: 0.5s ease;
-
-  &.carouselprev0 {
-    transform: rotateY(0deg);
-  }
-  &.carouselprev1 {
-    transform: rotateY(60deg);
-  }
-  &.carouselprev2 {
-    transform: rotateY(120deg);
-  }
-  &.carouselprev3 {
-    transform: rotateY(180deg);
-  }
-  &.carouselprev4 {
-    transform: rotateY(240deg);
-  }
-  &.carouselprev5 {
-    transform: rotateY(300deg);
-  }
-  &.carouselprev-1 {
-    transform: rotateY(-60deg);
-  }
-  &.carouselprev-2 {
-    transform: rotateY(-120deg);
-  }
-  &.carouselprev-3 {
-    transform: rotateY(-180deg);
-  }
-  &.carouselprev-4 {
-    transform: rotateY(-240deg);
-  }
-  &.carouselprev-5 {
-    transform: rotateY(-300deg);
-  }
-}
-.carousel:hover {
-  animation-play-state: paused;
-}
-ul li a:hover {
-  opacity: 0.8;
-}
-ul li {
-  color: #fff;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  backface-visibility: hidden;
-  height: 140px;
-  width: 30vw;
-}
-ul li:nth-child(1) {
-  transform: translate3d(-25%, 0, 108.25px) rotateY(-60deg);
-}
-ul li:nth-child(2) {
-  transform: translate3d(50%, 0, 216.5px);
-}
-ul li:nth-child(3) {
-  transform: translate3d(125%, 0, 108.25px) rotateY(60deg);
-}
-ul li:nth-child(4) {
-  transform: translate3d(125%, 0, -108.25px) rotateY(-240deg);
-}
-ul li:nth-child(5) {
-  transform: translate3d(50%, 0, -216.5px) rotateY(180deg);
-}
-ul li:nth-child(6) {
-  transform: translate3d(-25%, 0, -108.25px) rotateY(240deg);
-}
-ul li img {
-  display: block;
-  font: 60px / 1 'arial';
-  padding: 20px 0 0 20px;
+.name {
   text-align: left;
-  width: 250px;
 }
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
+.delayAppear {
+  animation-name: anime3;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  /*animation-iteration-count: 1;*/
+  animation-delay: 18s;
+  animation-fill-mode: forwards;
+  opacity: 0;
 }
-.bigimg {
-  position: absolute;
-  height: 80vh;
-  max-width: 800px;
-  top: 80px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-}
-.modal .bigimg img {
-  height: 85vh;
-  max-width: 100%;
-  vertical-align: baseline;
-}
-.close-btn {
-  color: #fff;
-  font-size: 40px;
-  position: absolute;
-  right: 20px;
-  top: 0;
-}
-.close-btn a {
-  color: #fff;
-  text-decoration: none;
-}
-.close-btn a:hover {
-  color: #fff;
-  text-decoration: none;
+@keyframes anime3 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @media screen and (min-width: 481px) {
-  header {
-    position: sticky;
-    top: 0;
-    background-color: #fff;
-    margin-bottom: 20px;
-  }
   h1 {
     color: #000;
     font-size: 36px;
