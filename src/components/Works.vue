@@ -20,6 +20,10 @@
   <div class="worksText">
     <TypeWriterText :text="'作品を選択してください'" :textTimeout="20000" />
   </div>
+  <div class="resume">
+    <button><a :href="rsmurls" target="”_blank”">履歴書</a></button>
+    <p><a :href="careerurls" target="”_blank”">職務経歴書</a></p>
+  </div>
   <transition name="fadeHoge">
     <div class="modal" v-if="modalvisible" @click.prevent="hidemodal">
       <div class="bigimg"><img :src="currentimgurl" alt="" /></div>
@@ -52,6 +56,14 @@ export default {
         './assets/hirabayashi_works_page-0004.jpg',
         './assets/hirabayashi_works_page-0005.jpg'
       ]
+    },
+    rsmurls: {
+      type: Array,
+      default: ['./assets/rirekisho2021.pdf']
+    },
+    careerurls: {
+      type: Array,
+      default: ['./assets/shokumukeirekisho2021.pdf']
     },
     msg: {
       type: String,
@@ -113,7 +125,7 @@ export default {
 
 <style lang="scss" scoped>
 $n: 11; // Number of images
-$item-width: 200px; // Width of an image. In the Js version this value can be a percentage
+$item-width: 180px; // Width of an image. In the Js version this value can be a percentage
 $item-separation: 10px; // The space between the images. This will decrease the effective item width
 $viewer-distance: 800px;
 // Derived variables
@@ -170,6 +182,11 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
       border: 1px solid;
       letter-spacing: 1px;
       padding: 5px 10px;
+      &:hover {
+        background: #333;
+        color: #fff;
+        transition: 0.3s ease;
+      }
     }
   }
 }
@@ -183,6 +200,9 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
   justify-content: center;
   border: 1px solid #333;
   border-radius: 6px;
+}
+.resume a {
+  position: relative;
 }
 .arrows {
   color: #fff;

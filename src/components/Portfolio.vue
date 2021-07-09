@@ -4,55 +4,24 @@
       <p>POTFOLIO START</p>
     </div>
   </div>
-  <section class="container">
-    <main>
-      <div class="portfolioWrapper">
-        <div class="bgStack">
-          <div class="bgStack1"></div>
-          <div class="bgStack2"></div>
+  <div class="bgImg">
+    <section class="container">
+      <main>
+        <!--<button @click="counter++" id="counter">Counter: {{ counter }}</button>-->
+        <div class="prof delayUp">
+          <Profile />
         </div>
-      </div>
 
-      <!--<button @click="counter++" id="counter">Counter: {{ counter }}</button>-->
-      <div class="prof delayUp">
-        <div class="face">
-          <img :src="imgProf" alt="顔写真" width="150px" />
+        <div class="img delayAppear">
+          <Works />
         </div>
-        <div class="name">
-          <p>
-            <TypeWriterText :text="'名前：平林　彰史'" :textTimeout="3200" />
-          </p>
-          <p>
-            <TypeWriterText
-              :text="'1983年6月24日、東京都の小平市に生まれる。'"
-              :textTimeout="6400"
-            />
-          </p>
-          <p>
-            <TypeWriterText
-              :text="'趣味はお菓子作り、ゲーム。'"
-              :textTimeout="8400"
-            />
-          </p>
-          <p>
-            <TypeWriterText
-              :text="
-                '高校卒業後、ファッションデザイナーを目指すが挫折。しかしグラフィックの面白さに目覚め現在に至る。'
-              "
-              :textTimeout="10400"
-            />
-          </p>
-        </div>
-      </div>
-      <div class="approved">
-        ※掲載許諾済
-      </div>
 
-      <div class="img delayAppear">
-        <Works />
-      </div>
-    </main>
-  </section>
+        <div class="approved">
+          ※掲載許諾済
+        </div>
+      </main>
+    </section>
+  </div>
 </template>
 
 <script lang="ts">
@@ -66,11 +35,13 @@ function sleepW (timeout: number) {
 
 import TypeWriterText from './TypeWriterText.vue'
 import Works from './Works.vue'
+import Profile from './Profile.vue'
 export default {
   name: 'Portfolio',
   components: {
     TypeWriterText,
-    Works
+    Works,
+    Profile
   },
   props: {
     imgurls: {
@@ -126,68 +97,9 @@ export default {
 <style lang="scss" scoped>
 $bg_color: #fafafa;
 $font_color: #333;
-.portfolioWrapper {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
 main {
   display: block;
-  background: orange;
   height: 100vh;
-}
-.bgStack {
-  display: block;
-  overflow: hidden;
-}
-.bgStack1 {
-  position: fixed;
-  background: #fff;
-  opacity: 0.3;
-  width: 100vw;
-  height: 100vh;
-  transform: rotate(0deg);
-  transition: 0.3s ease;
-  top: 0;
-  left: 0;
-  animation-name: anime4;
-  animation-duration: 3s;
-  animation-timing-function: ease;
-  animation-delay: 3s;
-  animation-fill-mode: forwards;
-}
-@keyframes anime4 {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-4deg);
-  }
-}
-
-.bgStack2 {
-  position: fixed;
-  background: #fff;
-  opacity: 0.3;
-  width: 100vw;
-  height: 100vh;
-  transform: rotate(0deg);
-  transition: 0.3s ease;
-  top: 0;
-  left: 0;
-  animation-name: anime5;
-  animation-duration: 3s;
-  animation-timing-function: ease;
-  animation-delay: 4s;
-  animation-fill-mode: forwards;
-}
-@keyframes anime5 {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-8deg);
-  }
 }
 .shutter {
   position: fixed;
@@ -212,18 +124,6 @@ main {
     height: 1px;
     animation: shutterOpen 2.6s forwards;
   }
-}
-
-.content {
-  animation: contentScale 2.6s forwards;
-}
-.approved {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  color: #fff;
-  text-align: right;
-  opacity: 0.8;
 }
 @keyframes byeShutter {
   70% {
@@ -254,7 +154,73 @@ main {
     height: 100%;
   }
 }
-
+.bgImg {
+  background: orange;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: 50%;
+  position: relative;
+  &::before {
+    content: '';
+    background-color: #fff;
+    opacity: 0.3;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    animation-name: anime4;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+  }
+  &::after {
+    content: '';
+    background-color: #fff;
+    opacity: 0.3;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    animation-name: anime5;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+  }
+}
+@keyframes anime4 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-4deg);
+  }
+}
+@keyframes anime5 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-8deg);
+  }
+}
+.content {
+  animation: contentScale 2.6s forwards;
+}
+.approved {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #fff;
+  text-align: right;
+  opacity: 0.8;
+}
 @keyframes contentScale {
   70% {
     transform: perspective(800px) scale(0.9) rotateX(15deg);
@@ -299,45 +265,30 @@ h1 {
     top: 50%;
   }
   100% {
-    top: 18%;
+    top: 13%;
   }
 }
 .prof {
   position: absolute;
+  top: 50%;
+  left: 50%;
   display: flex;
   flex-direction: row;
   margin-bottom: 50px;
   max-width: 300px;
   width: 86vw;
   margin: 0 auto;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -75%);
   background: #fff;
   padding: 10px;
   border-radius: 6px;
   border: 3px solid #808080;
   box-shadow: 3px 3px 0 0 rgb(255 255 255 / 75%);
-}
-.face {
-  margin-right: 20px;
-  margin-left: 0px;
-}
-.face img {
-  width: 50px;
-}
-.name {
-  text-align: left;
+  transform: translate(-50%, -50%);
 }
 .delayAppear {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   animation-name: anime3;
   animation-duration: 3s;
   animation-timing-function: ease;
-  /*animation-iteration-count: 1;*/
   animation-delay: 18s;
   animation-fill-mode: forwards;
   opacity: 0;
@@ -352,6 +303,7 @@ h1 {
 }
 
 @media screen and (min-width: 481px) {
+  //レスポンシブ
   h1 {
     color: #000;
     font-size: 36px;
@@ -391,16 +343,6 @@ h1 {
     border-radius: 10px;
     border: 3px solid #808080;
     box-shadow: 3px 3px 0 0 rgb(255 255 255 / 75%);
-  }
-  .face {
-    margin-right: 20px;
-    margin-left: 0px;
-  }
-  .face img {
-    width: 124px;
-  }
-  .name {
-    text-align: left;
   }
   .delayAppear {
     animation-name: anime3;
