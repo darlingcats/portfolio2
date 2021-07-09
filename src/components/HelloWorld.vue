@@ -12,6 +12,7 @@
       <!--<a href="http://www.tam-tam.co.jp/tipsnote/">
             <button>TipsNote に戻る</button>
         </a>-->
+      <button id="counter">Counter: {{ counter }}</button>
       <div class="prof">
         <div class="face">
           <img src="../assets/P_B2C1_0316_182849.jpg" alt="顔写真" />
@@ -61,8 +62,15 @@ import { defineProps, reactive } from 'vue'
 defineProps({
   msg: String
 })
-
 const state = reactive({ count: 0 })
+
+const Counter = {
+  data () {
+    return {
+      counter: 0
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
