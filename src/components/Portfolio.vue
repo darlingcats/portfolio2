@@ -83,7 +83,7 @@ export default {
     },
     imgProf: {
       type: String,
-      default: './assets/face.png.jpg'
+      default: './assets/face.png'
     },
     msg: {
       type: String,
