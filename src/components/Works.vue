@@ -42,15 +42,10 @@ export default {
       default: [
         './assets/hirabayashi_works_page-0006.jpg',
         './assets/hirabayashi_works_page-0007.jpg',
-        './assets/hirabayashi_works_page-0008.jpg',
         './assets/hirabayashi_works_page-0009.jpg',
-        './assets/hirabayashi_works_page-0010.jpg',
-        './assets/hirabayashi_works_page-0011.jpg',
         './assets/hirabayashi_works_page-0012.jpg',
         './assets/hirabayashi_works_page-0013.jpg',
         './assets/hirabayashi_works_page-0014.jpg',
-        './assets/hirabayashi_works_page-0015.jpg',
-        './assets/hirabayashi_works_page-0016.jpg',
         './assets/hirabayashi_works_page-0001.jpg',
         './assets/hirabayashi_works_page-0002.jpg',
         './assets/hirabayashi_works_page-0003.jpg',
@@ -117,7 +112,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$n: 16; // Number of images
+$n: 11; // Number of images
 $item-width: 200px; // Width of an image. In the Js version this value can be a percentage
 $item-separation: 10px; // The space between the images. This will decrease the effective item width
 $viewer-distance: 800px;

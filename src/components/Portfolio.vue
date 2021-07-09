@@ -17,7 +17,7 @@
         </div>
         <div class="name">
           <p>
-            <TypeWriterText :text="'平林　彰史'" :textTimeout="3200" />
+            <TypeWriterText :text="'名前：平林　彰史'" :textTimeout="3200" />
           </p>
           <p>
             <TypeWriterText
@@ -213,8 +213,9 @@ main {
   position: absolute;
   bottom: 0;
   right: 0;
-  color: #aaa;
+  color: #fff;
   text-align: right;
+  opacity: 0.8;
 }
 @keyframes byeShutter {
   70% {
@@ -256,7 +257,7 @@ main {
 }
 
 .startword {
-  width: 350px;
+  width: 500px;
   height: 50px;
   position: absolute;
   top: 50%;
@@ -266,13 +267,10 @@ main {
   text-align: center;
   transform: translate(-50%, -50%);
   font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-/*.startword p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}*/
 header {
   position: sticky;
   top: 0;
