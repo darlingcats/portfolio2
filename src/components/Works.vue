@@ -195,7 +195,7 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 999;
@@ -203,9 +203,9 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
 .bigimg {
   text-align: center;
   position: absolute;
-  width: 90vw;
+  /*width: 90vw;*/
   /*height: 80vh;*/
-  max-width: 800px;
+  /*max-width: 800px;*/
   top: 80px;
   left: 0;
   right: 0;
@@ -214,13 +214,13 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
   transform: rotate(360deg);
 }
 .modal .bigimg img {
-  height: 85vh;
   max-width: 100%;
   vertical-align: baseline;
+  width: 90vw;
 }
 .close-btn {
   color: #fff;
-  font-size: 40px;
+  font-size: 20px;
   position: absolute;
   right: 20px;
   top: 0;
@@ -346,7 +346,7 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 999;
