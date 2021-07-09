@@ -5,6 +5,7 @@
     </div>
   </div>
   <div class="bgImg">
+    <div class="bgImg2"></div>
     <section class="container">
       <main>
         <!--<button @click="counter++" id="counter">Counter: {{ counter }}</button>-->
@@ -177,22 +178,6 @@ main {
     animation-fill-mode: forwards;
     pointer-events: none;
   }
-  &::after {
-    content: '';
-    background-color: #fff;
-    opacity: 0.3;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    animation-name: anime5;
-    animation-duration: 3s;
-    animation-timing-function: ease;
-    animation-delay: 3s;
-    animation-fill-mode: forwards;
-    pointer-events: none;
-  }
 }
 @keyframes anime4 {
   0% {
@@ -201,6 +186,21 @@ main {
   100% {
     transform: rotate(-4deg);
   }
+}
+.bgImg2 {
+  background-color: #fff;
+  opacity: 0.3;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  animation-name: anime5;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+  pointer-events: none;
 }
 @keyframes anime5 {
   0% {

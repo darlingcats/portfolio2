@@ -370,6 +370,7 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
     transform: rotate(360deg);
   }
   .modal .bigimg img {
+    width: auto;
     height: 85vh;
     max-width: 100%;
     vertical-align: baseline;
