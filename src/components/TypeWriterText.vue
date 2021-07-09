@@ -57,7 +57,7 @@ export default {
 <style lang="scss" scoped>
 .wrapper {
   font-size: 12px;
-  /*display: flex;*/
+  display: flex;
   font-family: 'DotGothic16', sans-serif;
 }
 @keyframes prompt {
@@ -71,5 +71,24 @@ export default {
 .prompt {
   position: absolute;
   animation: prompt 1s ease infinite;
+}
+@media screen and (min-width: 481px) {
+  .wrapper {
+    font-size: 20px;
+    display: flex;
+    font-family: 'DotGothic16', sans-serif;
+  }
+  @keyframes prompt {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0.9;
+    }
+  }
+  .prompt {
+    position: absolute;
+    animation: prompt 1s ease infinite;
+  }
 }
 </style>

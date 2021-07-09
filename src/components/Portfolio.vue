@@ -6,10 +6,13 @@
   </div>
   <section class="container">
     <main>
-      <div class="bgStack">
-        <div class="bgStack1"></div>
-        <div class="bgStack2"></div>
+      <div class="portfolioWrapper">
+        <div class="bgStack">
+          <div class="bgStack1"></div>
+          <div class="bgStack2"></div>
+        </div>
       </div>
+
       <!--<button @click="counter++" id="counter">Counter: {{ counter }}</button>-->
       <div class="prof delayUp">
         <div class="face">
@@ -123,7 +126,11 @@ export default {
 <style lang="scss" scoped>
 $bg_color: #fafafa;
 $font_color: #333;
-
+.portfolioWrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 main {
   display: block;
   background: orange;
@@ -131,15 +138,16 @@ main {
 }
 .bgStack {
   display: block;
+  overflow: hidden;
 }
 .bgStack1 {
+  position: fixed;
   background: #fff;
   opacity: 0.3;
   width: 100vw;
   height: 100vh;
   transform: rotate(0deg);
   transition: 0.3s ease;
-  position: absolute;
   top: 0;
   left: 0;
   animation-name: anime4;
@@ -158,13 +166,13 @@ main {
 }
 
 .bgStack2 {
+  position: fixed;
   background: #fff;
   opacity: 0.3;
   width: 100vw;
   height: 100vh;
   transform: rotate(0deg);
   transition: 0.3s ease;
-  position: absolute;
   top: 0;
   left: 0;
   animation-name: anime5;
@@ -257,7 +265,7 @@ main {
 }
 
 .startword {
-  width: 500px;
+  width: 100vw;
   height: 50px;
   position: absolute;
   top: 50%;
@@ -322,6 +330,10 @@ h1 {
   text-align: left;
 }
 .delayAppear {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   animation-name: anime3;
   animation-duration: 3s;
   animation-timing-function: ease;
