@@ -43,6 +43,10 @@ export default {
     Works
   },
   props: {
+    imgProf: {
+      type: String,
+      default: './assets/face.png'
+    },
     rsmurls: {
       type: Array,
       default: ['./assets/rirekisho2021.pdf']
