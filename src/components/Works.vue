@@ -37,7 +37,7 @@
 
 <script lang="ts">
 export default {
-  name: 'HelloWorld',
+  name: 'Works',
   props: {
     imgurls: {
       type: Array,
@@ -236,14 +236,6 @@ ul li {
   height: 140px;
   width: 250px;
 }
-/*@keyframes anime1 {
-    0% {
-      transform: rotateY(0);
-    }
-    100% {
-      transform: rotateY(-360deg);
-    }
-  }*/
 ul li:nth-child(1) {
   transform: translate3d(-25%, 0, 108.25px) rotateY(-60deg);
 }

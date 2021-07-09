@@ -1,6 +1,6 @@
 <template>
   <!--<img alt="Vue logo" src="./assets/logo.png" />-->
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <Portfolio msg="Hello Vue 3 + TypeScript + Vite" />
   <!--<div class="app">
     <Carousel @next="next" @prev="prev">
       <CarouselSlide
@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import Portfolio from './components/Portfolio.vue'
 import Carousel from './components/Carousel.vue'
 import CarouselSlide from './components/CarouselSlide.vue'
 import { ref, computed } from 'vue'
@@ -26,7 +26,7 @@ import { ref, computed } from 'vue'
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld,
+    Portfolio,
     Carousel,
     CarouselSlide
   },

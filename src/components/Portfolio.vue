@@ -49,7 +49,6 @@
           </p>
         </div>
       </div>
-      <!--
       <div class="img delayAppear">
         <div class="arrows" @click="carouselIdx = ++carouselIdx % 6">
           ＜
@@ -63,7 +62,6 @@
           ＞
         </div>
       </div>
-      -->
       <div class="underWindow">
         <div class="name">
           <p>
@@ -97,7 +95,7 @@ function sleepW (timeout: number) {
 import TypeWriterText from './TypeWriterText.vue'
 import Works from './Works.vue'
 export default {
-  name: 'HelloWorld',
+  name: 'Portfolio',
   components: {
     TypeWriterText,
     Works
@@ -505,113 +503,6 @@ ul li img {
     }
   }
 
-  .img {
-    display: flex;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-  }
-  .arrows {
-    color: #fff;
-    cursor: pointer;
-    font-size: 250%;
-    font-weight: bold;
-    margin: auto;
-  }
-  .carousel {
-    position: relative;
-    transform-style: preserve-3d;
-    animation: anime1 20s linear infinite;
-    height: 140px;
-    width: 500px;
-    margin: auto;
-    transition: 0.5s ease;
-
-    &.carouselprev0 {
-      transform: rotateY(0deg);
-    }
-    &.carouselprev1 {
-      transform: rotateY(60deg);
-    }
-    &.carouselprev2 {
-      transform: rotateY(120deg);
-    }
-    &.carouselprev3 {
-      transform: rotateY(180deg);
-    }
-    &.carouselprev4 {
-      transform: rotateY(240deg);
-    }
-    &.carouselprev5 {
-      transform: rotateY(300deg);
-    }
-    &.carouselprev-1 {
-      transform: rotateY(-60deg);
-    }
-    &.carouselprev-2 {
-      transform: rotateY(-120deg);
-    }
-    &.carouselprev-3 {
-      transform: rotateY(-180deg);
-    }
-    &.carouselprev-4 {
-      transform: rotateY(-240deg);
-    }
-    &.carouselprev-5 {
-      transform: rotateY(-300deg);
-    }
-  }
-  .carousel:hover {
-    animation-play-state: paused;
-  }
-  ul li a:hover {
-    opacity: 0.8;
-  }
-  ul li {
-    color: #fff;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    backface-visibility: hidden;
-    height: 140px;
-    width: 250px;
-  }
-  /*@keyframes anime1 {
-    0% {
-      transform: rotateY(0);
-    }
-    100% {
-      transform: rotateY(-360deg);
-    }
-  }*/
-  ul li:nth-child(1) {
-    transform: translate3d(-25%, 0, 108.25px) rotateY(-60deg);
-  }
-  ul li:nth-child(2) {
-    transform: translate3d(50%, 0, 216.5px);
-  }
-  ul li:nth-child(3) {
-    transform: translate3d(125%, 0, 108.25px) rotateY(60deg);
-  }
-  ul li:nth-child(4) {
-    transform: translate3d(125%, 0, -108.25px) rotateY(-240deg);
-  }
-  ul li:nth-child(5) {
-    transform: translate3d(50%, 0, -216.5px) rotateY(180deg);
-  }
-  ul li:nth-child(6) {
-    transform: translate3d(-25%, 0, -108.25px) rotateY(240deg);
-  }
-  ul li img {
-    display: block;
-    font: 60px / 1 'arial';
-    padding: 20px 0 0 20px;
-    text-align: left;
-    width: 200px;
-  }
   .underWindow {
     position: absolute;
     display: flex;
@@ -689,16 +580,6 @@ ul li img {
   .fadeHoge-leave-to img {
     opacity: 0;
     transform: rotate(360deg) scale(30%);
-  }
-  .works-enter-active,
-  .works-leave-active {
-    transition-delay: 5s;
-    transition: 1s ease;
-  }
-
-  .works-enter-from,
-  .works-leave-to {
-    opacity: 0;
   }
 }
 </style>
