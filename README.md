@@ -25,3 +25,8 @@ Run `Volar: Switch TS Plugin on/off` from VSCode command palette.
 3. Open `src/main.ts` in VSCode
 4. Open the VSCode command palette
 5. Search and run "Select TypeScript version" -> "Use workspace version"
+
+## memo:
+1. 編集後　npm run build
+2. 作成されたdistフォルダ配下の必要なファイルをdocs配下にコピー
+3. コミット＆プッシュ

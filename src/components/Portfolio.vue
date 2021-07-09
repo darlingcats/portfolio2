@@ -16,11 +16,7 @@
       <button @click="counter++" id="counter">Counter: {{ counter }}</button>
       <div class="prof delayUp">
         <div class="face">
-          <img
-            src="../assets/P_B2C1_0316_182849.jpg"
-            alt="顔写真"
-            width="150px"
-          />
+          <img :src="imgProf" alt="顔写真" width="150px" />
         </div>
         <div class="name">
           <p>
@@ -53,7 +49,7 @@
           <p>
             <TypeWriterText
               :text="'作品を選択してください。'"
-              :textTimeout="3200"
+              :textTimeout="20000"
             />
           </p>
         </div>
@@ -97,6 +93,10 @@ export default {
         '/src/assets/20210315sale.jpg',
         '/src/assets/20210318sale.jpg'
       ]
+    },
+    imgProf: {
+      type: String,
+      default: './assets/P_B2C1_0316_182849.jpg'
     },
     msg: {
       type: String,
