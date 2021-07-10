@@ -224,7 +224,7 @@ main {
   background-color: darkorange;
   background-image: linear-gradient(-90deg, orange 50%, transparent 50%),
     linear-gradient(orange 50%, transparent 50%);
-  background-size: 40px 40px;
+  background-size: 30px 30px;
   position: relative;
   &::before {
     content: '';
@@ -507,6 +507,29 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
 
 @media screen and (min-width: 481px) {
   //レスポンシブ
+  .bgImg {
+    background-color: darkorange;
+    background-image: linear-gradient(-90deg, orange 50%, transparent 50%),
+      linear-gradient(orange 50%, transparent 50%);
+    background-size: 40px 40px;
+    position: relative;
+    &::before {
+      content: '';
+      background-color: #fff;
+      opacity: 0.4;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      animation-name: anime4;
+      animation-duration: 3s;
+      animation-timing-function: ease;
+      animation-delay: 3s;
+      animation-fill-mode: forwards;
+      pointer-events: none;
+    }
+  }
   h1 {
     color: #000;
     font-size: 36px;
