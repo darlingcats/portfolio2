@@ -77,9 +77,9 @@ export default {
 .face {
   margin-right: 10px;
   margin-left: 0px;
-}
-.face img {
-  width: 55px;
+  img {
+    width: 60px;
+  }
 }
 .profText {
   text-align: left;
@@ -129,9 +129,9 @@ export default {
   .face {
     margin-right: 20px;
     margin-left: 0px;
-  }
-  .face img {
-    width: 124px;
+    img {
+      width: 124px;
+    }
   }
   .profText {
     text-align: left;

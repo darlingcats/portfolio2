@@ -9,7 +9,6 @@
     <section class="container">
       <main>
         <!--<button @click="counter++" id="counter">Counter: {{ counter }}</button>-->
-
         <div class="img delayAppear">
           <div class="carouselImg">
             <figure>
@@ -187,7 +186,6 @@ main {
     z-index: -1;
   }
 }
-
 @keyframes shutterOpen {
   0% {
     width: 0;
@@ -206,17 +204,32 @@ main {
     height: 100%;
   }
 }
-.bgImg {
-  background: orange;
+.startword {
   width: 100vw;
-  height: 100vh;
-  background-size: cover;
-  background-position: 50%;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #1e1e1e;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bgImg {
+  background-color: darkorange;
+  background-image: linear-gradient(-90deg, orange 50%, transparent 50%),
+    linear-gradient(orange 50%, transparent 50%);
+  background-size: 40px 40px;
   position: relative;
   &::before {
     content: '';
     background-color: #fff;
-    opacity: 0.3;
+    opacity: 0.4;
     position: absolute;
     left: 0;
     right: 0;
@@ -240,7 +253,7 @@ main {
 }
 .bgImg2 {
   background-color: #fff;
-  opacity: 0.3;
+  opacity: 0.4;
   position: absolute;
   left: 0;
   right: 0;
@@ -279,22 +292,6 @@ main {
   100% {
     transform: perspective(800px) scale(1) rotateX(0);
   }
-}
-
-.startword {
-  width: 100vw;
-  height: 50px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background: #1e1e1e;
-  border: 1px solid #fff;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  font-size: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 h1 {
   color: #000;
