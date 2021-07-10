@@ -323,8 +323,8 @@ h1 {
   display: flex;
   flex-direction: row;
   margin-bottom: 50px;
-  max-width: 300px;
-  width: 86vw;
+  max-width: 400px;
+  width: 90vw;
   margin: 0 auto;
   background: #fff;
   padding: 10px;
