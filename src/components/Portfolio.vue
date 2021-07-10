@@ -316,7 +316,7 @@ h1 {
     top: 50%;
   }
   100% {
-    top: 13%;
+    top: 16%;
   }
 }
 .prof {
@@ -444,24 +444,24 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 999;
-}
-.bigimg {
-  text-align: center;
-  position: absolute;
-  /*width: 90vw;*/
-  /*height: 80vh;*/
-  /*max-width: 800px;*/
-  top: 80px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  transition: 1s ease;
-  transform: rotate(360deg);
-}
-.modal .bigimg img {
-  max-width: 100%;
-  vertical-align: baseline;
-  width: 90vw;
+  .bigimg {
+    text-align: center;
+    position: absolute;
+    /*width: 90vw;*/
+    /*height: 80vh;*/
+    /*max-width: 800px;*/
+    top: 80px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transition: 1s ease;
+    transform: rotate(360deg);
+    img {
+      max-width: 100%;
+      vertical-align: baseline;
+      width: 90vw;
+    }
+  }
 }
 .close-btn {
   color: #fff;
@@ -469,14 +469,14 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
   position: absolute;
   right: 20px;
   top: 0;
-}
-.close-btn a {
-  color: #fff;
-  text-decoration: none;
-}
-.close-btn a:hover {
-  color: #fff;
-  text-decoration: none;
+  a {
+    color: #fff;
+    text-decoration: none;
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
 }
 .fadeHoge-enter-active,
 .fadeHoge-leave-active {
@@ -554,7 +554,6 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
     animation-name: anime3;
     animation-duration: 3s;
     animation-timing-function: ease;
-    /*animation-iteration-count: 1;*/
     animation-delay: 18s;
     animation-fill-mode: forwards;
     opacity: 0;
@@ -578,7 +577,7 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 35vh;
+    padding-top: 38vh;
     perspective: $viewer-distance;
     overflow: hidden;
     > * {
@@ -654,25 +653,25 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 999;
-  }
-  .bigimg {
-    text-align: center;
-    position: absolute;
-    /*width: 80%;*/
-    height: 80vh;
-    max-width: 800px;
-    top: 80px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    transition: 1s ease;
-    transform: rotate(360deg);
-  }
-  .modal .bigimg img {
-    width: auto;
-    height: 85vh;
-    max-width: 100%;
-    vertical-align: baseline;
+    .bigimg {
+      text-align: center;
+      position: absolute;
+      /*width: 80%;*/
+      height: 80vh;
+      max-width: 800px;
+      top: 80px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      transition: 1s ease;
+      transform: rotate(360deg);
+      img {
+        width: auto;
+        height: 85vh;
+        max-width: 100%;
+        vertical-align: baseline;
+      }
+    }
   }
   .close-btn {
     color: #fff;
@@ -680,14 +679,14 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
     position: absolute;
     right: 20px;
     top: 0;
-  }
-  .close-btn a {
-    color: #fff;
-    text-decoration: none;
-  }
-  .close-btn a:hover {
-    color: #fff;
-    text-decoration: none;
+    a {
+      color: #fff;
+      text-decoration: none;
+      &:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
   }
 }
 </style>

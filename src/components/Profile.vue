@@ -75,20 +75,26 @@ export default {
 
 <style lang="scss" scoped>
 .face {
-  margin-right: 20px;
+  margin-right: 10px;
   margin-left: 0px;
 }
 .face img {
-  width: 50px;
+  width: 55px;
 }
 .profText {
   text-align: left;
+  p {
+    display: block;
+    &:nth-child(n + 2) {
+      margin-top: 5px;
+    }
+  }
 }
 .resume {
   display: flex;
   justify-content: space-around;
   align-items: baseline;
-  margin-top: 20px;
+  margin-top: 10px;
   animation-name: resumeAnime;
   animation-duration: 3s;
   animation-timing-function: ease;
@@ -99,6 +105,7 @@ export default {
     border: 1px solid;
     border-radius: 3px;
     padding: 5px 10px;
+    font-size: 12px;
     &:hover {
       color: #fff;
       background: #000;
@@ -118,6 +125,7 @@ export default {
 }
 
 @media screen and (min-width: 481px) {
+  //レスポンシブ
   .face {
     margin-right: 20px;
     margin-left: 0px;
@@ -131,6 +139,31 @@ export default {
       display: block;
       &:nth-child(n + 2) {
         margin-top: 10px;
+      }
+    }
+  }
+  .resume {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    margin-top: 20px;
+    animation-name: resumeAnime;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-delay: 15s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    button {
+      font-size: 16px;
+      border: 1px solid;
+      border-radius: 3px;
+      padding: 5px 10px;
+      &:hover {
+        color: #fff;
+        background: #000;
+      }
+      a {
+        position: relative;
       }
     }
   }
