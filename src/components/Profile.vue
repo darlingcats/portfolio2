@@ -124,7 +124,7 @@ export default {
   }
 }
 
-@media screen and (min-width: 480px) and (max-width: 1024px) {
+@media screen and (min-width: 648px) and (max-width: 1024px) {
   //レスポンシブ
   .face {
     margin-right: 15px;

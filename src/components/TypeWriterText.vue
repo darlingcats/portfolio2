@@ -72,7 +72,7 @@ export default {
   position: absolute;
   animation: prompt 1s ease infinite;
 }
-@media screen and (min-width: 480px) and (max-width: 1024px) {
+@media screen and (min-width: 648px) and (max-width: 1024px) {
   .wrapper {
     font-size: 16px;
     display: flex;
