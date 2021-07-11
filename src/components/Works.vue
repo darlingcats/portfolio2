@@ -140,6 +140,7 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
       width: 100%;
       box-sizing: border-box;
       padding: 0 $item-separation;
+      cursor: pointer;
       &:not(:first-of-type) {
         position: absolute;
         left: 0;
@@ -296,6 +297,7 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
         width: 100%;
         box-sizing: border-box;
         padding: 0 $item-separation;
+        cursor: pointer;
         &:not(:first-of-type) {
           position: absolute;
           left: 0;
