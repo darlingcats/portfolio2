@@ -417,7 +417,7 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
   }
 }
 .worksText {
-  width: 45vw;
+  width: 165px;
   height: 35px;
   margin: 15px auto;
   color: #333;
@@ -506,7 +506,212 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
   opacity: 0;
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 480px) and (max-width: 1024px) {
+  //レスポンシブ
+  .bgImg {
+    background-color: darkorange;
+    background-image: linear-gradient(-90deg, orange 50%, transparent 50%),
+      linear-gradient(orange 50%, transparent 50%);
+    background-size: 35px 35px;
+    position: relative;
+    &::before {
+      content: '';
+      background-color: #fff;
+      opacity: 0.4;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      animation-name: anime4;
+      animation-duration: 3s;
+      animation-timing-function: ease;
+      animation-delay: 3s;
+      animation-fill-mode: forwards;
+      pointer-events: none;
+    }
+  }
+  h1 {
+    color: #000;
+    font-size: 36px;
+    font-weight: bold;
+    border: none;
+    text-align: left;
+    margin: 0 auto;
+  }
+  .delayUp {
+    animation-name: anime2;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-delay: 15s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes anime2 {
+    0% {
+      top: 50%;
+    }
+    100% {
+      top: 18%;
+    }
+  }
+  .prof {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+    max-width: 600px;
+    width: 58vw;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 3px solid #808080;
+    box-shadow: 3px 3px 0 0 rgb(255 255 255 / 75%);
+  }
+  .delayAppear {
+    animation-name: anime3;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-delay: 18s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+  }
+  @keyframes anime3 {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  $n: 11; // Number of images
+  $item-width: 200px; // Width of an image. In the Js version this value can be a percentage
+  $item-separation: 10px; // The space between the images. This will decrease the effective item width
+  $viewer-distance: 800px;
+  // Derived variables
+  $theta: 2 * 3.141592653589793 / $n;
+  $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
+  .carouselImg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 38vh;
+    perspective: $viewer-distance;
+    overflow: hidden;
+    > * {
+      flex: 0 0 auto;
+    }
+    figure {
+      margin: 0%;
+      width: $item-width;
+      transform-style: preserve-3d;
+      transform-origin: 50% 50% (-$apothem);
+      transition: transform 0.5s;
+      transform: rotateY(/* some amount here */ rad);
+      img {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 $item-separation;
+        cursor: pointer;
+        &:not(:first-of-type) {
+          position: absolute;
+          left: 0;
+          top: 0;
+          transform-origin: 50% 50% (-$apothem);
+        }
+        @for $i from 2 through $n {
+          &:nth-child(#{$i}) {
+            transform: rotateY(#{($i - 1) * $theta}rad);
+          }
+        }
+      }
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0 0;
+
+      button {
+        flex: 0 0 auto;
+        margin: 0 5px;
+
+        cursor: pointer;
+
+        color: #333;
+        font-weight: bold;
+        background: none;
+        border: 1px solid;
+        letter-spacing: 1px;
+        padding: 5px 10px;
+      }
+    }
+  }
+  .worksText {
+    width: 220px;
+    height: 48px;
+    margin: 15px auto;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #333;
+    border-radius: 10px;
+  }
+  .arrows {
+    color: #fff;
+    cursor: pointer;
+    font-size: 250%;
+    font-weight: bold;
+    margin: auto;
+  }
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    .bigimg {
+      text-align: center;
+      position: absolute;
+      /*width: 80%;*/
+      height: 80vh;
+      max-width: 800px;
+      top: 80px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      transition: 1s ease;
+      transform: rotate(360deg);
+      img {
+        width: auto;
+        height: 85vh;
+        max-width: 100%;
+        vertical-align: baseline;
+      }
+    }
+  }
+  .close-btn {
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    a {
+      color: #fff;
+      text-decoration: none;
+      &:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1025px) {
   //レスポンシブ
   .bgImg {
     background-color: darkorange;
@@ -650,7 +855,7 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
     }
   }
   .worksText {
-    width: 22vw;
+    width: 300px;
     height: 52px;
     margin: 15px auto;
     color: #333;

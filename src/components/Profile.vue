@@ -124,7 +124,51 @@ export default {
   }
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 480px) and (max-width: 1024px) {
+  //レスポンシブ
+  .face {
+    margin-right: 15px;
+    margin-left: 0px;
+    img {
+      width: 106px;
+    }
+  }
+  .profText {
+    text-align: left;
+    p {
+      display: block;
+      &:nth-child(n + 2) {
+        margin-top: 8px;
+      }
+    }
+  }
+  .resume {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    margin-top: 15px;
+    animation-name: resumeAnime;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-delay: 15s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    button {
+      font-size: 16px;
+      border: 1px solid;
+      border-radius: 3px;
+      padding: 5px 10px;
+      &:hover {
+        color: #fff;
+        background: #000;
+      }
+      a {
+        position: relative;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1025px) {
   //レスポンシブ
   .face {
     margin-right: 20px;

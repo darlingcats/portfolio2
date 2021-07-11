@@ -72,7 +72,26 @@ export default {
   position: absolute;
   animation: prompt 1s ease infinite;
 }
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 480px) and (max-width: 1024px) {
+  .wrapper {
+    font-size: 16px;
+    display: flex;
+    font-family: 'DotGothic16', sans-serif;
+  }
+  @keyframes prompt {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0.9;
+    }
+  }
+  .prompt {
+    position: absolute;
+    animation: prompt 1s ease infinite;
+  }
+}
+@media screen and (min-width: 1025px) {
   .wrapper {
     font-size: 20px;
     display: flex;
