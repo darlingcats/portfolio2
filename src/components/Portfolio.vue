@@ -506,7 +506,7 @@ $apothem: 482.842712474619px; // == $item-width / (2 * tan(PI / $n))
   opacity: 0;
 }
 
-@media screen and (min-width: 480px) and (max-width: 1024px) {
+@media screen and (min-width: 648px) and (max-width: 1024px) {
   //レスポンシブ
   .bgImg {
     background-color: darkorange;
