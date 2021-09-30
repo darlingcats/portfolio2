@@ -27,7 +27,7 @@
       />
     </p>
     <div class="resume">
-      <button><a :href="rsmurls" target="”_blank”">履歴書</a></button>
+      <!--<button><a :href="rsmurls" target="”_blank”">履歴書</a></button>-->
       <button><a :href="careerurls" target="”_blank”">職務経歴書</a></button>
     </div>
   </div>
